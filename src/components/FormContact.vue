@@ -19,7 +19,8 @@ export default {
       this.credentials = {
         title: "",
         duration: "",
-        notation: ""
+        notation: "",
+        public: false
       };
     }
   },
@@ -32,6 +33,10 @@ export default {
     <input type="text" placeholder="Le titre du site" v-model="credentials.title" />
     <input type="text" placeholder="Durée du film" v-model="credentials.duration" />
     <input type="text" placeholder="Notation du film" v-model="credentials.notation" />
+    <div>
+      <input type="radio" v-model="credentials.public" value="true" />
+      <input type="radio" v-model="credentials.public" value="false" />
+    </div>
     <input type="submit" value="Envoyer" />
   </form>
 
