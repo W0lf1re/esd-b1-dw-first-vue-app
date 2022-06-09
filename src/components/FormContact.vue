@@ -22,6 +22,10 @@ export default {
         notation: "",
         public: false
       };
+    },
+    handleUpdatePublic(film) {
+      console.log("handleUpdatePublic", film);
+      film.public = !film.public;
     }
   },
   components: { FilmsList }
@@ -34,11 +38,13 @@ export default {
     <input type="text" placeholder="Durée du film" v-model="credentials.duration" />
     <input type="text" placeholder="Notation du film" v-model="credentials.notation" />
     <div>
-      <input type="radio" v-model="credentials.public" value="true" />
-      <input type="radio" v-model="credentials.public" value="false" />
+      <label for="public-on">Public On</label>
+      <input id="public-on" type="radio" v-model="credentials.public" value="true" />
+      <label for="public-off">Public Off</label>
+      <input id="public-off" type="radio" v-model="credentials.public" value="false" />
     </div>
     <input type="submit" value="Envoyer" />
   </form>
 
-  <FilmsList :filmsList="filmsList" />
+  <FilmsList :filmsList="filmsList" v-on:handleUpdatePublic="handleUpdatePublic" />
 </template>
